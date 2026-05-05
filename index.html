@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<!-- saved from url=(0153)file:///Users/honglishuma/Desktop/%E6%89%93%E5%8D%B0%E6%9C%BA/DS620%E6%89%93%E5%8D%B0%E6%9C%BA%E7%BB%B4%E4%BF%AE%E6%95%99%E7%A8%8B%E5%90%88%E9%9B%86.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RX1HS打印机维修教程合集</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        /* Password Overlay */
+        .password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+        
+        .password-overlay.hidden {
+            display: none;
+        }
+        
+        .password-box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .password-box h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .password-box p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .password-box input {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            outline: none;
+            text-align: center;
+            margin-bottom: 15px;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+        
+        .password-box input:focus {
+            border-color: #667eea;
+        }
+        
+        .password-box button {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+        
+        .password-box button:hover {
+            opacity: 0.9;
+        }
+        
+        .error-msg {
+            color: #e74c3c;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        /* Header with Gradient */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: shimmer 4s infinite linear;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        /* Search Box */
+        .search-box {
+            padding: 20px 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            border-bottom: 1px solid #eee;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 25px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+        
+        .search-box input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+        }
+        
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 15px 30px;
+            background: #f8f9fa;
+            gap: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .category-tab {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .category-tab:hover, .category-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 30px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        
+        .legend-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .legend-color {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .hardware { background-color: #e74c3c; }
+        .paper { background-color: #f39c12; }
+        .troubleshoot { background-color: #e67e22; }
+        .software { background-color: #3498db; }
+        .setup { background-color: #2ecc71; }
+        
+        /* Stats */
+        .stats {
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 30px;
+            text-align: center;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .milestone {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb300 100%);
+            color: #333;
+            padding: 12px;
+            border-radius: 12px;
+            margin: 15px 30px;
+            text-align: center;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .completion {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        /* Tutorial Items */
+        .tutorial-list {
+            padding: 20px 30px;
+        }
+        
+        .tutorial-item {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tutorial-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tutorial-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-left-color: #764ba2;
+        }
+        
+        .tutorial-item:hover::after {
+            opacity: 1;
+        }
+        
+        .tutorial-title {
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tutorial-link {
+            position: relative;
+            z-index: 10;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 10px 0;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .tutorial-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .tips {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 100%);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #2c3e50;
+            border-left: 3px solid #f39c12;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+        
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(102, 126, 234, 0.5);
+            transition: all 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .print-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 35px rgba(102, 126, 234, 0.7);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .container {
+                border-radius: 0;
+            }
+            .tutorial-list, .search-box, .category-tabs {
+                padding: 15px;
+            }
+            .legend {
+                margin: 15px;
+            }
+        }
+        
+        /* Index List */
+        .index-list {
+            padding: 20px 30px;
+            background: #f8f9fa;
+        }
+        
+        .index-list ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        
+        .index-list li a {
+            display: block;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 8px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .index-list li a:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="password-overlay" id="passwordOverlay">
+        <div class="password-box">
+            <h2>🔐 请输入密码</h2>
+            <p>输入密码查看维修教程</p>
+            <input type="password" id="passwordInput" placeholder="请输入密码" onkeypress="if(event.key==='Enter')checkPassword()">
+            <button onclick="checkPassword()">解锁查看</button>
+            <p class="error-msg" id="errorMsg">密码错误，请重试</p>
+        </div>
+    </div>
+    <script>
+        const CORRECT_PASSWORD = '888888';
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            if (input === CORRECT_PASSWORD) {
+                document.getElementById('passwordOverlay').classList.add('hidden');
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+    </script>
+    <div class="container">
+        <div class="header">
+            <h1>🖨️ RX1HS打印机维修教程合集</h1>
+            <p class="subtitle">全面故障排查与解决方案</p>
+        </div>
+        
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 搜索教程..." oninput="searchTutorials()">
+        </div>
+        
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+            <span class="category-tab active" onclick="filterCategory(&#39;all&#39;)">📋 全部教程</span>
+            <span class="category-tab" onclick="filterCategory(&#39;driver&#39;)">💾 驱动安装</span>
+            <span class="category-tab" onclick="filterCategory(&#39;clean&#39;)">🧹 清洁保养</span>
+            <span class="category-tab" onclick="filterCategory(&#39;repair&#39;)">🔧 维修拆卸</span>
+            <span class="category-tab" onclick="filterCategory(&#39;service&#39;)">📦 寄修服务</span>
+            <span class="category-tab" onclick="filterCategory(&#39;firmware&#39;)">⚡ 固件升级</span>
+        </div>
+        
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color hardware"></div>
+                <span>硬件维修</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color paper"></div>
+                <span>纸张处理</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color troubleshoot"></div>
+                <span>故障排除</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color software"></div>
+                <span>软件安装</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color setup"></div>
+                <span>基础设置</span>
+            </div>
+        </div>
+        
+        <!-- Stats -->
+        <div class="stats">
+            📊 共收录 21 个维修教程，涵盖RX1HS打印机常见问题解决方案
+        </div>
+        
+        <div class="milestone">
+            🎯 里程碑！已收录 21 个完整教程
+        </div>
+        
+        <div class="completion">
+            🎉 完整版！包含所有21个RX1HS打印机维修教程
+        </div>
+        
+        <!-- Index List -->
+        <div class="index-list">
+            <ul id="tocList">
+                <li><a href="#1"><strong>1. 寄修流程</strong></a></li>
+                <li><a href="#2"><strong>2. 打印照片有白线，清洁打印头教程</strong></a></li>
+                <li><a href="#3"><strong>3. 卡纸不裁切情况（防滑胶条脱落），解决方法</strong></a></li>
+                <li><a href="#4"><strong>4. 打印照片有白点/压痕/鼓包情况，清洁进纸通道教程</strong></a></li>
+                <li><a href="#5"><strong>5. 手动开舱门教程</strong></a></li>
+                <li><a href="#6"><strong>6. 主板拆卸教程</strong></a></li>
+                <li><a href="#7"><strong>7. 裁刀拆卸教程</strong></a></li>
+                <li><a href="#8"><strong>8. 打印头拆卸教程</strong></a></li>
+                <li><a href="#9"><strong>9. 舱门拆卸教程</strong></a></li>
+                <li><a href="#10"><strong>10. 卡纸掰直角教程</strong></a></li>
+                <li><a href="#11"><strong>11. 色带断裂情况处理教程</strong></a></li>
+                <li><a href="#12"><strong>12. 卡纸情况处理教程</strong></a></li>
+                <li><a href="#13"><strong>13. 废纸条掉落处理教程</strong></a></li>
+                <li><a href="#14"><strong>14. 风扇拆卸教程</strong></a></li>
+                <li><a href="#15"><strong>15. 碾平和墩齐纸张教程</strong></a></li>
+                <li><a href="#16"><strong>16. windows系统驱动安装方法</strong></a></li>
+                <li><a href="#17"><strong>17. 苹果MAC系统驱动安装方法</strong></a></li>
+                <li><a href="#18"><strong>18. 色带和相纸安装方法</strong></a></li>
+                <li><a href="#19"><strong>19. windows系统色彩插件安装方法</strong></a></li>
+                <li><a href="#20"><strong>20. 苹果MAC系统色彩插件安装方法</strong></a></li>
+                <li><a href="#21"><strong>21. 舱门弹簧拆卸教程</strong></a></li>
+                </ul>
+        </div>
+        <!-- Tutorial List -->
+        <div class="tutorial-list">
+            <div class="tutorial-item" data-category="service" id="1">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/Pf6pfoNebdscQvcJfZFc6NjvnBb','_blank')" style="cursor:pointer">✨RX1HS打印机寄修流程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/Pf6pfoNebdscQvcJfZFc6NjvnBb" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                <div class="tips"><span>👉</span>Tips：寄修流程如有疑问的地方，请及时和我沟通</div>
+            </div>
+            <div class="tutorial-item" data-category="clean" id="2">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/PN64fNuC8dfqdJcFMcFcKyjCnHg','_blank')" style="cursor:pointer">✨RX1HS打印机打印照片有白线，清洁打印头教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/PN64fNuC8dfqdJcFMcFcKyjCnHg" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                <div class="tips"><span>👉</span>Tips：清洁打印头过程中遇到问题，请及时和我沟通</div>
+            </div>
+            <div class="tutorial-item" data-category="repair" id="3">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/Tr4SfsFBXdf6cUcgTOmcTpzanQb','_blank')" style="cursor:pointer">✨RX1HS打印机卡纸不裁切情况（防滑胶条脱落），解决方法</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/Tr4SfsFBXdf6cUcgTOmcTpzanQb" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                <div class="tips"><span>👉</span>Tips：拆卸机器过程遇到问题，请及时和我沟通</div>
+            </div>
+            <div class="tutorial-item" data-category="clean" id="4">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/SJbrfFCJwdfBRKc2SCocHgCJnxf','_blank')" style="cursor:pointer">✨RX1HS打印机打印照片有白点/压痕/鼓包情况，清洁进纸通道教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/SJbrfFCJwdfBRKc2SCocHgCJnxf" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                <div class="tips"><span>👉</span>Tips：清洁进纸通道过程中遇到问题，请及时和我沟通</div>
+            </div>
+            <div class="tutorial-item" data-category="repair" id="5">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/L4kHfZapOduRMLcoO0pcOIopnOd','_blank')" style="cursor:pointer">✨RX1HS手动开舱门教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/L4kHfZapOduRMLcoO0pcOIopnOd" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                
+            </div>
+            <div class="tutorial-item" data-category="repair" id="6">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/YLdEf4OVbdsxtOc6GZPcMyqynch','_blank')" style="cursor:pointer">✨RX1HS打印机主板拆卸教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/YLdEf4OVbdsxtOc6GZPcMyqynch" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                
+            </div>
+            <div class="tutorial-item" data-category="repair" id="7">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/JVYTf47I1d54Jnc3Dv4ckbl2nQg','_blank')" style="cursor:pointer">✨RX1HS打印机裁刀拆卸教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/JVYTf47I1d54Jnc3Dv4ckbl2nQg" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                
+            </div>
+            <div class="tutorial-item" data-category="repair" id="8">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/MdtOfbgERdVR8NcUj0TcezgjnXd','_blank')" style="cursor:pointer">✨RX1HS打印机打印头拆卸教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/MdtOfbgERdVR8NcUj0TcezgjnXd" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                
+            </div>
+            <div class="tutorial-item" data-category="repair" id="9">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/GsoOfPPoidYq8cc1t5rcRENFnfe','_blank')" style="cursor:pointer">✨RX1HS打印机舱门拆卸教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/GsoOfPPoidYq8cc1t5rcRENFnfe" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                
+            </div>
+            <div class="tutorial-item" data-category="repair" id="10">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/VJDJfKrbKdSVfEcIsnlck1FMnlf','_blank')" style="cursor:pointer">✨RX1HS打印机卡纸掰直角教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/VJDJfKrbKdSVfEcIsnlck1FMnlf" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                
+            </div>
+            <div class="tutorial-item" data-category="repair" id="11">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/SWgqfIZ63dteApcsvbBc8OlVnof','_blank')" style="cursor:pointer">✨RX1HS打印机色带断裂情况处理教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/SWgqfIZ63dteApcsvbBc8OlVnof" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                
+            </div>
+            <div class="tutorial-item" data-category="repair" id="12">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/VskefIkRCdWyDLcodB6cJycanLe','_blank')" style="cursor:pointer">✨RX1HS打印机卡纸情况处理教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/VskefIkRCdWyDLcodB6cJycanLe" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                
+            </div>
+            <div class="tutorial-item" data-category="repair" id="13">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/MmdhfHZ3QdukDmccLfNcccvUnVb','_blank')" style="cursor:pointer">✨RX1HS打印机废纸条掉落处理教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/MmdhfHZ3QdukDmccLfNcccvUnVb" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                
+            </div>
+            <div class="tutorial-item" data-category="repair" id="14">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/W6mwf0MyXdZn8scApiycNCZ5nQg','_blank')" style="cursor:pointer">✨RX1HS打印机风扇拆卸教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/W6mwf0MyXdZn8scApiycNCZ5nQg" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                
+            </div>
+            <div class="tutorial-item" data-category="repair" id="15">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/GZoHfr67gd4krvcqWM0cPHSdnH6','_blank')" style="cursor:pointer">✨RX1HS打印机碾平和墩齐纸张教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/GZoHfr67gd4krvcqWM0cPHSdnH6" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                
+            </div>
+            <div class="tutorial-item" data-category="driver" id="16">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/O3OIfKIhEd60z1c9hK5c9yChnYd','_blank')" style="cursor:pointer">✨RX1HS打印机windows系统驱动安装方法</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/O3OIfKIhEd60z1c9hK5c9yChnYd" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                <div class="tips"><span>👉</span>Tips：下载与安装过程中遇到问题，请及时和我沟通</div>
+            </div>
+            <div class="tutorial-item" data-category="driver" id="17">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/KdtdfZ37PdpG3YcCE3ccKTXwnBe','_blank')" style="cursor:pointer">✨RX1HS打印机苹果MAC系统驱动安装方法</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/KdtdfZ37PdpG3YcCE3ccKTXwnBe" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                <div class="tips"><span>👉</span>Tips：下载与安装过程中遇到问题，请及时和我沟通</div>
+            </div>
+            <div class="tutorial-item" data-category="clean" id="18">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/QW66fmL04d1J8zcYjH9co7Ugnze','_blank')" style="cursor:pointer">✨RX1HS打印机色带和相纸安装方法</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/QW66fmL04d1J8zcYjH9co7Ugnze" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                <div class="tips"><span>👉</span>Tips：安装过程中遇到问题，请及时和我沟通</div>
+            </div>
+            <div class="tutorial-item" data-category="driver" id="19">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/U4FSfT7Wld2KtxcVNxQcXJvFnYV','_blank')" style="cursor:pointer">✨RX1HS打印机windows系统色彩插件安装方法</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/U4FSfT7Wld2KtxcVNxQcXJvFnYV" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                <div class="tips"><span>👉</span>Tips：下载与安装过程中遇到问题，请及时和我沟通</div>
+            </div>
+            <div class="tutorial-item" data-category="driver" id="20">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/W4PffRAFwdSbRacHIxXc93IUnVe','_blank')" style="cursor:pointer">✨RX1HS打印机苹果MAC系统色彩插件安装方法</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/W4PffRAFwdSbRacHIxXc93IUnVe" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                <div class="tips"><span>👉</span>Tips：下载与安装过程中遇到问题，请及时和我沟通</div>
+            </div>
+            <div class="tutorial-item" data-category="repair" id="21">
+                <div class="tutorial-title" onclick="window.open('https://www.doubao.com/doc/IaTSforn9dbZtQcW6GEcLiinnHh','_blank')" style="cursor:pointer">✨RX1HS打印机舱门弹簧拆卸教程</div>
+                <p>点击下方链接解锁视频教程👇</p>
+                <a href="https://www.doubao.com/doc/IaTSforn9dbZtQcW6GEcLiinnHh" class="tutorial-link" target="_blank">
+                    <i class="fas fa-play-circle"></i> 查看详细教程
+                </a>
+                <div class="tips"><span>👉</span>Tips：拆卸过程中遇到问题，请及时和我沟通</div>
+            </div></div>
+        <!-- Footer -->
+        <div class="footer">
+            <p>📅 文档生成时间：2026年3月14日</p>
+            <p>📄 文档格式：RX1HS打印机维修教程合集</p>
+            <p>📊 包含教程总数：21个</p>
+            <p>🎯 覆盖范围：硬件维修、软件安装、故障排除、基础设置</p>
+            <p>🏆 最新添加：RX1HS打印机舱门弹簧拆卸教程</p>
+            <p>🌟 已覆盖RX1HS打印机的几乎所有使用场景</p>
+        </div>
+    </div>
+    
+    <!-- Print Button -->
+    <button class="print-btn" onclick="window.print()" title="打印此页">
+        <i class="fas fa-print"></i>
+    </button>
+    
+    <script>
+        // Search function
+        function searchTutorials() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            
+            // Search tutorials
+            const tutorials = document.querySelectorAll('.tutorial-item');
+            tutorials.forEach(tutorial => {
+                const title = tutorial.querySelector('.tutorial-title').textContent.toLowerCase();
+                const content = tutorial.querySelector('.tutorial-content') ? tutorial.querySelector('.tutorial-content').textContent.toLowerCase() : '';
+                
+                if (title.includes(filter) || content.includes(filter)) {
+                    tutorial.style.display = '';
+                } else {
+                    tutorial.style.display = 'none';
+                }
+            });
+            
+            // Search TOC
+            const tocLinks = document.querySelectorAll('#tocList li');
+            tocLinks.forEach(link => {
+                const linkText = link.textContent.toLowerCase();
+                if (linkText.includes(filter)) {
+                    link.style.display = '';
+                } else {
+                    link.style.display = 'none';
+                }
+            });
+        }
+        
+        // Category filter
+        function filterCategory(category) {
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+            
+            // 维修拆卸 shows both repair and hardware categories
+            const categoryMap = {
+                'repair': ['repair', 'hardware'],
+                'clean': 'clean',
+                'driver': 'driver',
+                'service': 'service',
+                'firmware': 'firmware',
+                'setup': 'setup',
+                'troubleshoot': 'troubleshoot'
+            };
+            
+            const mappedCategory = categoryMap[category];
+            const categories = Array.isArray(mappedCategory) ? mappedCategory : [mappedCategory || category];
+            
+            // Filter tutorials
+            const tutorials = document.querySelectorAll('.tutorial-item');
+            tutorials.forEach(tutorial => {
+                if (category === 'all' || categories.includes(tutorial.dataset.category)) {
+                    tutorial.style.display = '';
+                } else {
+                    tutorial.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+
+</body></html>
